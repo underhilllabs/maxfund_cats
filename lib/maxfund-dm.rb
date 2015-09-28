@@ -1,6 +1,5 @@
 require 'data_mapper'
 DataMapper.setup(:default, 'sqlite:data/maxfund_cats.db')
-puts "current dir is #{Dir.pwd}"
 
 class CatDM
   include DataMapper::Resource
@@ -12,11 +11,12 @@ class CatDM
   property :age,      String
   property :sexSN,      String
   property :loc,      String
-  property :url,      String
-  property :image_url,      String
+  property :url,      Text
+  property :image_url,      Text
   property :description,       Text      # A text block, for longer string data.
   property :created_at, DateTime  # A DateTime, for any date you might like.
+  property :updated_at, DateTime
 end
 
-#DataMapper.finalize
-DataMapper.auto_upgrade!
+DataMapper.auto_migrate!
+DataMapper::Model.raise_on_save_failure = true 

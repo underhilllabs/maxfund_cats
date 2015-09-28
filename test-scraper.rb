@@ -23,4 +23,25 @@ CSV.open("cats.csv", "wb") do |csv|
   end
 end
 
-
+# add to sqlite with DM
+reg_cats.each do |cat|
+  puts "writing #{cat.name} to database."
+  begin
+    @cat = CatDM.create({
+                 maxfund_id: cat.id,
+                 name: cat.name,
+                 breed: cat.breed,
+                 age: cat.age,
+                 sexSN: cat.sn,
+                 loc: cat.loc,
+                 image_url: cat.image,
+                 url: cat.url,
+                 created_at: Time.now,
+                 updated_at: Time.now            
+              })
+    puts "saved #{@cat}, meow mr. #{@cat.name}"
+  rescue DataMapper::SaveFailureError => e
+    puts e.resource.errors.inspect
+  end
+  #@cat.save
+end

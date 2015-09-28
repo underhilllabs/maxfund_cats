@@ -1,9 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 
-class Cat
-  attr_accessor :name, :age, :sn, :breed, :loc, :arrival_date, :image, :url, :id
-end
+Cat = Struct.new(:name, :age, :sn, :breed, :loc, :arrival_date, :image, :url, :id)
 
 def retrieve_cats_url(url)
   cats = []
