@@ -8,6 +8,6 @@ get '/' do
 end
 
 get '/cat/:id' do
-  @cat = CatDM.find(params[:id]).first
+  @cat = CatDM.get(params[:id])
   haml :cat_detail
 end
