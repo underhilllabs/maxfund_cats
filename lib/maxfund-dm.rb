@@ -9,14 +9,17 @@ class CatDM
   property :maxfund_id,      String
   property :breed,      String
   property :age,      String
+  property :color, String
   property :sexSN,      String
   property :loc,      String
   property :url,      Text
   property :image_url,      Text
   property :description,       Text      # A text block, for longer string data.
+  property :intake_date, DateTime
   property :created_at, DateTime  # A DateTime, for any date you might like.
   property :updated_at, DateTime
 end
 
-DataMapper.auto_migrate!
+DataMapper.finalize
+DataMapper.auto_upgrade!
 DataMapper::Model.raise_on_save_failure = true 
