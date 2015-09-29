@@ -1,0 +1,27 @@
+.cat-details
+  %h2= "#{@cat.name} details"
+  %table#cat-details
+    %tr
+      %td{colspan: 2}
+        %img{src: @cat.image_url}
+    %tr
+      %td= "Name"
+      %td= @cat.name
+    %tr
+      %td= "Color"
+      %td= @cat.color
+    %tr
+      %td= "Age"
+      %td= @cat.age
+    %tr
+      %td= "Room"
+      %td= @cat.loc
+    %tr
+      %td= "Intake Date"
+      %td= @cat.intake_date
+    %tr
+      %td= "Sex/N"
+      %td= @cat.sexSN
+
+  %h3= "Descripton"
+  %p.desc= @cat.description

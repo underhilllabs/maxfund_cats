@@ -1,0 +1,30 @@
+div.navbar {
+  background: wheat;
+  padding: 1em;
+  margin: 0em;
+  width: 100%;
+}
+div.navbar a {
+  color: #343434;
+  text-decoration: none;
+  font-size: 140%;
+}
+div.main_content {
+  padding: 1em;
+}
+body {
+  margin: 0;
+}
+
+div.cats td {
+  margin: 5px 5px 5px 5px;
+  background: #9a9a9a;
+  border: 1px solid black;
+}
+span.loc {
+  font-size: 125%;
+}
+.cat-details {
+  margin: auto;
+  width: 800px
+}

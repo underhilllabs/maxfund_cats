@@ -1,0 +1,15 @@
+%h2= "Welcome to a Maxfund Cats Listing"
+
+.cats
+  %table
+    - @cats.each_with_index do |cat, idx|
+      - if idx % 3 == 0
+        %tr
+
+      %td
+        %h2= cat.name 
+        %img{src: cat.image_url}
+        %p
+          %span{class: "loc"}= "location: #{cat.loc}" 
+
+
