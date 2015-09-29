@@ -28,3 +28,7 @@ span.loc {
   margin: auto;
   width: 800px
 }
+h2 a {
+  color: #232323;
+  text-decoration: none;
+}
