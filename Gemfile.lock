@@ -1,20 +1,59 @@
-GIT
-  remote: https://github.com/openaustralia/scraperwiki-ruby.git
-  revision: fc50176812505e463077d5c673d504a6a234aa78
-  branch: morph_defaults
-  specs:
-    scraperwiki (3.0.1)
-      httpclient
-      sqlite_magic
-
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.3.8)
+    bcrypt (3.1.10)
+    bcrypt-ruby (3.1.5)
+      bcrypt (>= 3.1.3)
+    daemons (1.2.3)
+    data_mapper (1.2.0)
+      dm-aggregates (~> 1.2.0)
+      dm-constraints (~> 1.2.0)
+      dm-core (~> 1.2.0)
+      dm-migrations (~> 1.2.0)
+      dm-serializer (~> 1.2.0)
+      dm-timestamps (~> 1.2.0)
+      dm-transactions (~> 1.2.0)
+      dm-types (~> 1.2.0)
+      dm-validations (~> 1.2.0)
+    dm-aggregates (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-constraints (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-core (1.2.1)
+      addressable (~> 2.3)
+    dm-migrations (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-serializer (1.2.2)
+      dm-core (~> 1.2.0)
+      fastercsv (~> 1.5)
+      json (~> 1.6)
+      json_pure (~> 1.6)
+      multi_json (~> 1.0)
+    dm-timestamps (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-transactions (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-types (1.2.2)
+      bcrypt-ruby (~> 3.0)
+      dm-core (~> 1.2.0)
+      fastercsv (~> 1.5)
+      json (~> 1.6)
+      multi_json (~> 1.0)
+      stringex (~> 1.4)
+      uuidtools (~> 2.1)
+    dm-validations (1.2.0)
+      dm-core (~> 1.2.0)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    eventmachine (1.0.8)
+    fastercsv (1.5.5)
+    haml (4.0.7)
+      tilt
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    httpclient (2.6.0.1)
+    json (1.8.3)
+    json_pure (1.8.2)
     mechanize (2.7.3)
       domain_name (~> 0.5, >= 0.5.1)
       http-cookie (~> 1.0)
@@ -26,22 +65,46 @@ GEM
       webrobots (>= 0.0.9, < 0.2)
     mime-types (2.5)
     mini_portile (0.6.2)
+    multi_json (1.11.2)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     ntlm-http (0.1.1)
-    sqlite3 (1.3.10)
-    sqlite_magic (0.0.3)
-      sqlite3
+    rack (1.6.4)
+    rack-protection (1.5.3)
+      rack
+    sinatra (1.4.6)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
+    slim (3.0.6)
+      temple (~> 0.7.3)
+      tilt (>= 1.3.3, < 2.1)
+    stringex (1.5.1)
+    temple (0.7.6)
+    thin (1.6.4)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0, >= 1.0.4)
+      rack (~> 1.0)
+    tilt (2.0.1)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
+    uuidtools (2.1.5)
     webrobots (0.1.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  data_mapper
+  haml
   mechanize
-  scraperwiki!
+  nokogiri
+  sinatra
+  slim
+  thin
+
+BUNDLED WITH
+   1.10.5

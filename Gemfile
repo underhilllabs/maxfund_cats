@@ -5,5 +5,10 @@
 source "https://rubygems.org"
 
 
-gem "scraperwiki", git: "https://github.com/openaustralia/scraperwiki-ruby.git", branch: "morph_defaults"
 gem "mechanize"
+gem "nokogiri"
+gem "sinatra"
+gem "data_mapper"
+gem "thin"
+gem "slim"
+gem "haml"
