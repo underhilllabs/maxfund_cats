@@ -3,7 +3,7 @@ require 'sinatra'
 require './lib/maxfund-dm'
 
 get '/' do
-  @cats = CatDM.all
+  @cats = CatDM.all(order: [:loc.asc])
   haml :welcome
 end
 
