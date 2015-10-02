@@ -39,8 +39,6 @@ end
                  color: cat.color,
                  url: cat.url,
                  intake_date:  Date.strptime(cat.intake, "%m/%d/%Y").to_time,
-                 created_at: Time.now,
-                 updated_at: Time.now            
               })
     puts "saved #{@cat}, meow mr. #{@cat.name}"
   rescue DataMapper::SaveFailureError => e

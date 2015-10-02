@@ -18,6 +18,14 @@ class CatDM
   property :intake_date, DateTime
   property :created_at, DateTime  # A DateTime, for any date you might like.
   property :updated_at, DateTime
+
+  before :save do
+    self.updated_at = Time.now
+  end
+
+  before :create do
+    self.created_at = Time.now
+  end
 end
 
 DataMapper.finalize
