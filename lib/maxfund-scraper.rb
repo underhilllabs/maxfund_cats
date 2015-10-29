@@ -23,24 +23,29 @@ CSV.open("cats.csv", "wb") do |csv|
   end
 end
 
+# First set is_current to 0 foreach
+CatDM.update(:is_current => 0)
 # add to sqlite with DM
 (reg_cats + sn_cats).each do |cat|
   puts "writing #{cat.name} to database."
   begin
-    @cat = CatDM.first_or_create({maxfund_id: cat.id}, {
-                 maxfund_id: cat.id,
-                 name: cat.name,
-                 description: cat.description,
-                 breed: cat.breed,
-                 age: cat.age,
-                 sexSN: cat.sn,
-                 loc: cat.loc,
-                 image_url: cat.image,
-                 color: cat.color,
-                 url: cat.url,
-                 intake_date:  Date.strptime(cat.intake, "%m/%d/%Y").to_time,
-              })
-    puts "saved #{@cat}, meow mr. #{@cat.name}"
+    @cat = CatDM.first_or_new(maxfund_id: cat.id)
+    attr = { maxfund_id: cat.id,
+             name: cat.name,
+             description: cat.description,
+             breed: cat.breed,
+             age: cat.age,
+             sexSN: cat.sn,
+             loc: cat.loc,
+             is_current: 1,
+             image_url: cat.image,
+             color: cat.color,
+             url: cat.url,
+             intake_date:  Date.strptime(cat.intake, "%m/%d/%Y").to_time,
+    }
+    @cat.attributes = attr
+    saved = @cat.save
+    puts "saved? #{saved} >>  #{@cat}, meow mr. #{@cat.name}"
   rescue DataMapper::SaveFailureError => e
     puts e.resource.errors.inspect
   end
