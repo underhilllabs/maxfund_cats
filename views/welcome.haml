@@ -6,7 +6,7 @@
       - if idx % 3 == 0
         %tr
 
-      %td
+      %td{class: "adopted-#{cat.is_current}"}
         %h2
           %a{href: "/cat/#{cat.id}"} #{cat.name}
         %img{src: cat.image_url}

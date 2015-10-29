@@ -21,6 +21,9 @@ div.cats td {
   background: #9a9a9a;
   border: 1px solid black;
 }
+div.cats td.adopted-0 {
+  background: #bc8888;
+}
 span.loc {
   font-size: 125%;
 }

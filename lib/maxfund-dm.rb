@@ -10,6 +10,7 @@ class CatDM
   property :breed,      String
   property :age,      String
   property :color, String
+  property :is_current, Integer
   property :sexSN,      String
   property :loc,      String
   property :url,      Text
