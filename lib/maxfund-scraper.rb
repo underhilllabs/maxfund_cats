@@ -27,7 +27,6 @@ end
 CatDM.update(:is_current => 0)
 # add to sqlite with DM
 (reg_cats + sn_cats).each do |cat|
-  puts "writing #{cat.name} to database."
   begin
     @cat = CatDM.first_or_new(maxfund_id: cat.id)
     attr = { maxfund_id: cat.id,
@@ -45,7 +44,6 @@ CatDM.update(:is_current => 0)
     }
     @cat.attributes = attr
     saved = @cat.save
-    puts "saved? #{saved} >>  #{@cat}, meow mr. #{@cat.name}"
   rescue DataMapper::SaveFailureError => e
     puts e.resource.errors.inspect
   end
