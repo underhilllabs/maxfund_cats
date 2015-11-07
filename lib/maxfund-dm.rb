@@ -20,6 +20,14 @@ class CatDM
   property :created_at, DateTime  # A DateTime, for any date you might like.
   property :updated_at, DateTime
 
+  def self.current
+    all(is_current: 1, order: [:loc.asc])
+  end
+  
+  def self.alumni
+    all(is_current: 0, order: [:loc.asc])
+  end
+
   before :save do
     self.updated_at = Time.now
   end

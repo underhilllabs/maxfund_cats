@@ -13,4 +13,18 @@
         %p
           %span{class: "loc"}= "location: #{cat.loc}" 
 
+%h2= "Alumni Cats"
+.cats
+  %table
+    - @cat_alumni.each_with_index do |cat, idx|
+      - if idx % 3 == 0
+        %tr
+
+      %td{class: "adopted-#{cat.is_current}"}
+        %h2
+          %a{href: "/cat/#{cat.id}"} #{cat.name}
+        %img{src: cat.image_url}
+        %p
+          %span{class: "loc"}= "location: #{cat.loc}" 
+
 
