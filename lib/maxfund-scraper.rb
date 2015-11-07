@@ -13,16 +13,6 @@ doc = Nokogiri::HTML(open('http://maxfund.org/special-cats/'))
 url = doc.css('iframe')[0].attributes["src"].text
 sn_cats = retrieve_cats_url(url)
 
-CSV.open("cats.csv", "wb") do |csv|
-  csv << ["Name", "ID", "Description", "SexSN", "Breed", "Age", "Room", "Image", "URL", "Category"]
-  reg_cats.each do |cat|
-    csv << ["#{cat.name}", "#{cat.id}", "#{cat.description}", "#{cat.sn}", "#{cat.breed}", "#{cat.age}", "#{cat.loc}", "#{cat.image}", "#{cat.url}", "Regular"]
-  end
-  sn_cats.each do |cat|
-    csv << ["#{cat.name}", "#{cat.id}", "#{cat.description}", "#{cat.sn}", "#{cat.breed}", "#{cat.age}", "#{cat.loc}", "#{cat.image}", "#{cat.url}", "Special Needs"]
-  end
-end
-
 # First set is_current to 0 foreach
 CatDM.update(:is_current => 0)
 # add to sqlite with DM
@@ -43,7 +33,7 @@ CatDM.update(:is_current => 0)
              intake_date:  Date.strptime(cat.intake, "%m/%d/%Y").to_time,
     }
     @cat.attributes = attr
-    saved = @cat.save
+    @cat.save
   rescue DataMapper::SaveFailureError => e
     puts e.resource.errors.inspect
   end
