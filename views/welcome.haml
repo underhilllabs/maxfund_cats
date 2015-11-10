@@ -9,7 +9,7 @@
       %td{class: "adopted-#{cat.is_current}"}
         %h2
           %a{href: "/cat/#{cat.id}"} #{cat.name}
-        %img{src: cat.image_url}
+        %img{src: "/#{cat.image_url}"}
         %p
           %span{class: "loc"}= "location: #{cat.loc}" 
 
