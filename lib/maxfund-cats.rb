@@ -21,7 +21,7 @@ def retrieve_cats_url(url)
     cat.image = "http:" + cat_page.css("img#imgAnimalPhoto").first["src"]
     # save image locally
     img_loc = "image/cat-#{cat.id}.jpg"
-    if !File.exists? img_loc
+    if !File.exists? "public/#{img_loc}"
       agent.get(cat.image).save "public/#{img_loc}"
       puts "saving #{cat.image} to #{img_loc}"
     end
