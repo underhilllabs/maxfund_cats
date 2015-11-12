@@ -1,6 +1,6 @@
 %h2= "Welcome to a Maxfund Cats Listing"
 
-%div{class: "cats clearfix"}
+%div{class: "cats"}
   - @cats.each_with_index do |cat, idx|
     -loc_class = cat.loc.downcase.tr(' ', '_')
 
