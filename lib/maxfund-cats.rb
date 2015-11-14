@@ -23,10 +23,8 @@ def retrieve_cats_url(url)
     img_loc = "image/cat-#{cat.id}.jpg"
     if !File.exists? "public/#{img_loc}"
       agent.get(cat.image).save "public/#{img_loc}"
-      puts "saving #{cat.image} to #{img_loc}"
     end
     cat.image = img_loc
-    #cat.image = cat_td.css(".list-animal-photo-block img").first["src"]
     cat.breed = cat_td.css(".list-animal-breed").text
     cat.age = cat_td.css(".list-animal-age").text
     cat.sn = cat_td.css(".list-animal-sexSN").text
