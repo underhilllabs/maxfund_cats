@@ -1,17 +1,18 @@
 %h2= "Welcome to a Maxfund Cats Listing"
 
-.cats
-  %table
-    - @cats.each_with_index do |cat, idx|
-      - if idx % 3 == 0
-        %tr
+%div{class: "cats"}
+  - @cats.each_with_index do |cat, idx|
+    -loc_class = cat.loc.downcase.tr(' ', '_')
 
-      %td{class: "adopted-#{cat.is_current}"}
-        %h2
-          %a{href: "/cat/#{cat.id}"} #{cat.name}
-        %img{src: "/#{cat.image_url}"}
-        %p
-          %span{class: "loc"}= "location: #{cat.loc}" 
+    %div{class: "adopted-#{cat.is_current} cat #{loc_class}"}
+      %span{class:"l1"}
+      %span{class:"l2"}
+      %span{class:"l3"}
+      %span{class:"l4"}
+      %a{href: "/cat/#{cat.id}"} #{cat.name}
+      %img{src: "/#{cat.image_url}"}
+      %p
+        %span{class: "loc"}= "location: #{cat.loc}" 
 
 %h2= "Alumni Cats"
 .cats
