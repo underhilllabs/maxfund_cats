@@ -1,5 +1,11 @@
 Ruby app for viewing current adoptable cats at Maxfund. Also includes cats that have been adopted in a different background color.
 
+## Download Dependencies
+Run bundle install.
+```
+bundle install
+```
+
 
 ## Running the Web Scraper
 
