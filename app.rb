@@ -8,7 +8,16 @@ get '/' do
   haml :welcome
 end
 
+
 get '/cat/:id' do
   @cat = CatDM.get(params[:id])
   haml :cat_detail
 end
+
+get '/cats.json' do
+  content_type :json
+  @cats = CatDM.all.to_json
+end
+
+
+
