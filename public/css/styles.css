@@ -35,3 +35,27 @@ h2 a {
   color: #232323;
   text-decoration: none;
 }
+li > div,
+div.filter {
+  border: #cdcdcd 1px solid;
+  padding: 1em;
+}
+
+div.main h1 {
+  padding-left: 1em;
+}
+
+nav.top-bar {
+  margin-bottom: 2em;
+}
+
+img {
+  x-max-width: 250px;
+}
+
+div.checkBoxFilter,
+.meta-info {
+  border: 1px dashed #cdcdcd;
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
