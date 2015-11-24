@@ -13,13 +13,13 @@
 
     <div class="row">
       <div class="small-10 large-6 columns">
-        <input type="text" ng-model="query" placeholder="Search by name" />
+        <input type="text" ng-model="query.name" placeholder="Search by name" />
       </div>
       <div class="small-10 large-3 columns">
-        <select ng-model="sexFilter">
+        <select ng-model="query.sexSN">
           <option value="">Filter by Sex</option>
-          <option value="female">Female</option>
-          <option value="male">Male</option>
+          <option value="Female/Spayed">Female</option>
+          <option value="Male/Neutered">Male</option>
         </select>
       </div>
       <div class="small-10 large-3 columns">
@@ -28,35 +28,28 @@
         </select>
       </div>
 
-
-      <div class="small-6 large-10 columns checkBoxFilter">
-        <h4>Filter by checkbox, why don't ya!</h4>
-        <input type=checkbox ng-model="sexFilter.female">Female
-        <br>
-        <input type=checkbox ng-model="sexFilter.male">Male
-        <br>
-      </div>
-
-      <!-- show animal cards -->
-      <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
-        <li ng-repeat="cat in cats = (results| filter:query)">
-
-          <div>
-            <h3>{{cat.name}}</h3>
-            <img ng-src="{{cat.image_url}}" x-width="250px" />
-            <br>Location : {{ cat.loc || 'N/A' }}
-            <br>Breed : {{ cat.breed || 'N/A' }}
-            <br>Age : {{ cat.age || 'N/A' }}
-            <br><span class="desc">{{cat.desc}}</span>
-          </div>
-        </li>
-      </ul>
       <div class="meta-info">
         <h4>Current count: {{cats.length}}</h4>
         <div ng-show="!cats.length">
           <h4>No celebrity animals</h4>
         </div>
       </div>
+
+      <!-- show animal cards -->
+      <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+        <li ng-repeat="cat in cats = (results| filter:query:strict )">
+
+          <div>
+            <h3>{{cat.name}}</h3>
+            <img ng-src="{{cat.image_url}}" x-width="250px" />
+            <br>Location: {{ cat.loc || 'N/A' }}
+            <br>Breed: {{ cat.breed || 'N/A' }}
+            <br>Age: {{ cat.age || 'N/A' }}
+            <br>Sex: {{cat.sexSN}}
+            <br><span class="desc">{{cat.desc}}</span>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 
