@@ -35,11 +35,12 @@
         </div>
       </div>
 
+      <h2>Current Cats</h2>
       <!-- show animal cards -->
       <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
-        <li ng-repeat="cat in cats = (results| filter:query:strict )">
+        <li ng-repeat="cat in cats = (current | filter:query:strict )">
 
-          <div>
+          <div class="adopted-{{cat.is_current}}">
             <h3>{{cat.name}}</h3>
             <img ng-src="{{cat.image_url}}" x-width="250px" />
             <br>Location: {{ cat.loc || 'N/A' }}
@@ -50,6 +51,28 @@
           </div>
         </li>
       </ul>
+
+      <h2>Alumni</h2>
+      <div class="meta-info">
+        <h4>count: {{alums.length}}</h4>
+      </div>
+      <!-- show animal cards -->
+      <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+        <li ng-repeat="alum in alums = (alum| filter:query:strict )">
+
+          <div>
+            <h3>{{alum.name}}</h3>
+            <img ng-src="{{alum.image_url}}" x-width="250px" />
+            <br>Location: {{ alum.loc || 'N/A' }}
+            <br>Breed: {{ alum.breed || 'N/A' }}
+            <br>Age: {{ alum.age || 'N/A' }}
+            <br>Sex: {{alum.sexSN}}
+            <br><span class="desc">{{alum.desc}}</span>
+          </div>
+        </li>
+      </ul>
+
+
     </div>
   </div>
 

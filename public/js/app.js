@@ -29,7 +29,8 @@ app.filter('myFilter', function() {
 });
 
 app.controller("mainController", function($scope, $http, animalModel) {
-  $scope.results = [];
+  $scope.current = [];
+  $scope.alum = [];
   $scope.filterText = null;
   //$scope.availableCategories = [];
   $scope.availableLocs = [];
@@ -39,7 +40,9 @@ app.controller("mainController", function($scope, $http, animalModel) {
   // $scope.setCategoryFilter = function(category) {
   //   $scope.categoryFilter = category;
   //};
-  $scope.results = animalModel.init();
+  results = animalModel.init();
+  $scope.current = results[0];
+  $scope.alum = results[1];
   //$scope.availableCategories = animalModel.getCategories();
   $scope.availableLocs = animalModel.getLocs();
 });
@@ -48,6 +51,9 @@ app.factory('animalModel', function($http) {
   //var availableCategories = [];
   var availableLocs = [];
   var results = [];
+  var alum = [];
+  var current = [];
+
   var init = function() {
     // Download the spreadsheet data and add it to the scope objects above
     $http({
@@ -56,7 +62,11 @@ app.factory('animalModel', function($http) {
     }).success(function(data) {
 
       angular.forEach(data, function(value, index) {
-          results.push(value);
+          if(value.is_current == 0) {
+              alum.push(value);
+          } else {
+              current.push(value);
+          }
           //console.log("cat: " + value.image);
           // Building personality array
           // angular.forEach(classes.gsx$personality, function(category, index) {
@@ -86,7 +96,7 @@ app.factory('animalModel', function($http) {
     }).error(function(error) {
         Console.log("Err:" + error);
     });
-    return results;
+    return [current, alum];
   };
   var getLocs = function() {
     return availableLocs;
