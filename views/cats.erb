@@ -1,0 +1,83 @@
+<h2>Cats</h2>
+
+<div class="main" ng-app="myApp">
+  <div ng-controller="mainController" ng-init="init()">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Famous Celebrity Animal Search</a></h1>
+        </li>
+
+      </ul>
+    </nav>
+
+    <div class="row">
+      <div class="small-10 large-6 columns">
+        <input type="text" ng-model="query" placeholder="Search by name" />
+      </div>
+      <div class="small-10 large-3 columns">
+        <select ng-model="categoryFilter" ng-options="cat for cat in availableCategories">
+          <option value="">Filter by Personality</option>
+        </select>
+      </div>
+      <div class="small-10 large-3 columns">
+        <select ng-model="speciesFilter" ng-options="spec for spec in availableSpecies">
+          <option value="">Filter by Species</option>
+        </select>
+      </div>
+
+
+      <div class="small-6 large-10 columns checkBoxFilter">
+        <h4>Filter by checkbox, why don't ya!</h4>
+        <input type=checkbox ng-model="catFilter.cat"> Cats
+        <br>
+        <input type=checkbox ng-model="catFilter.dog"> Dogs
+        <br>
+        <input type=checkbox ng-model="catFilter.pig"> Pigs
+        <br>
+      </div>
+
+      <!-- show animal cards -->
+      <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+        <li ng-animate="'animate'" ng-repeat="cat in cats=(results | filter:{gsx$name.$t:
+        query} | filter:{gsx$personality.$t: categoryFilter} | filter:{gsx$species.$t:
+        speciesFilter} | orderBy:orderProp | myFilter:catFilter)"
+        class="{{classes.gsx$name.$t}}">
+
+
+          <div>
+            <h3>{{cat.gsx$name.$t}}</h3>
+            <img ng-src="{{cat.gsx$theimg.$t}}" x-width="250px" />
+            <br />Personality : {{ cat.gsx$personality.$t || 'N/A' }}
+            <br>Species : {{ cat.gsx$species.$t || 'N/A' }}
+            <br>Color: <span style="background: {{ cat.gsx$color.$t}}; padding-right:
+            2em;"> &nbsp; </span>
+          </div>
+        </li>
+      </ul>
+      <div class="meta-info">
+        <h4>Current count: {{cats.length}}</h4>
+        <div ng-show="!cats.length">
+          <h4>No celebrity animals</h4>
+        </div>
+      </div>
+      <div class="large-8 columns">
+        Here is the Google Spreadsheet that contains the data:
+        <br />
+        <a href="https://docs.google.com/spreadsheets/d/1RF7iCiu9VdMyE0MB_cQH8QTnqV-3yFiR_lPyUNcvw5s/edit#gid=0">Famous
+        Animals Google Spreadsheet</a>
+
+        <p>
+          Also, you can export the Google Spreadsheet as json
+          with <a href="https://gist.github.com/underhilllabs/bc28b019cba72ef33c87">this
+          google app script</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://code.angularjs.org/1.1.5/angular.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.3/css/foundation.min.css">
+
