@@ -21,7 +21,10 @@ div.cats td {
   background: #9a9a9a;
   border: 1px solid black;
 }
-div.cats td.adopted-0 {
+div.cats td.adopted-0{
+  background: #CC99CC;
+}
+div.alum {
   background: #CC99CC;
 }
 span.loc {
@@ -31,10 +34,12 @@ span.loc {
   margin: auto;
   width: 800px
 }
+
 h2 a {
   color: #232323;
   text-decoration: none;
 }
+li div.cat-detail, 
 li > div,
 div.filter {
   border: #cdcdcd 1px solid;
@@ -46,6 +51,7 @@ div.main h1 {
 }
 
 nav.top-bar {
+  padding-bottom: 2em;
   margin-bottom: 2em;
 }
 
@@ -56,6 +62,7 @@ img {
 div.checkBoxFilter,
 .meta-info {
   border: 1px dashed #cdcdcd;
+  padding: 1em;
   margin-bottom: 1em;
   margin-left: 1em;
 }

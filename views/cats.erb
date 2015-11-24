@@ -1,5 +1,8 @@
-<h2>Cats</h2>
-
+<html>
+  <head>
+    <title>Maxfund Cat Search</title>
+  </head>
+<body>
 <div class="main" ng-app="myApp">
   <div ng-controller="mainController" ng-init="init()">
     <nav class="top-bar" data-topbar role="navigation">
@@ -10,8 +13,8 @@
 
       </ul>
     </nav>
-
     <div class="row">
+
       <div class="small-10 large-6 columns">
         <input type="text" ng-model="query.name" placeholder="Search by name" />
       </div>
@@ -29,19 +32,19 @@
       </div>
 
       <div class="meta-info">
-        <h4>Current count: {{cats.length}}</h4>
+        <h4>Cat count: {{cats.length}}</h4>
         <div ng-show="!cats.length">
           <h4>No celebrity animals</h4>
         </div>
       </div>
 
-      <h2>Current Cats</h2>
+      <h2>Adoptable Cats</h2>
       <!-- show animal cards -->
       <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
         <li ng-repeat="cat in cats = (current | filter:query:strict )">
 
-          <div class="adopted-{{cat.is_current}}">
-            <h3>{{cat.name}}</h3>
+          <div class="cat-detail adopted-{{cat.is_current}}">
+            <h3><a href="/cat/{{cat.id}}">{{cat.name}}</a></h3>
             <img ng-src="{{cat.image_url}}" x-width="250px" />
             <br>Location: {{ cat.loc || 'N/A' }}
             <br>Breed: {{ cat.breed || 'N/A' }}
@@ -52,7 +55,7 @@
         </li>
       </ul>
 
-      <h2>Alumni</h2>
+      <h2>Maxfund Alumni</h2>
       <div class="meta-info">
         <h4>count: {{alums.length}}</h4>
       </div>
@@ -60,8 +63,8 @@
       <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
         <li ng-repeat="alum in alums = (alum| filter:query:strict )">
 
-          <div>
-            <h3>{{alum.name}}</h3>
+          <div class="alum cat-detail">
+            <h3><a href="cat/{{alum.id}}">{{alum.name}}</a></h3>
             <img ng-src="{{alum.image_url}}" x-width="250px" />
             <br>Location: {{ alum.loc || 'N/A' }}
             <br>Breed: {{ alum.breed || 'N/A' }}
@@ -80,5 +83,8 @@
 
 <script src="https://code.angularjs.org/1.1.5/angular.js"></script>
 <script src="js/app.js"></script>
-<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.3/css/foundation.min.css">
-
+<link rel="stylesheet" type="text/css"
+      href="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.3/css/foundation.min.css">
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+</body>
+</html>
