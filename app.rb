@@ -19,5 +19,7 @@ get '/cats.json' do
   @cats = CatDM.all.to_json
 end
 
-
+get '/cats' do
+  erb :cats
+end
 
