@@ -1,5 +1,4 @@
 require 'data_mapper'
-require 'dm-serializer/to_json'
 DataMapper.setup(:default, 'sqlite:data/maxfund_cats.db')
 
 class CatDM
