@@ -67,6 +67,10 @@ app.factory('animalModel', function($http) {
           } else {
               current.push(value);
           }
+          if(availableLocs.indexOf(value.loc) == -1) {
+              availableLocs.push(value.loc);
+          }
+
           //console.log("cat: " + value.image);
           // Building personality array
           // angular.forEach(classes.gsx$personality, function(category, index) {

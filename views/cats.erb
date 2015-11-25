@@ -26,7 +26,7 @@
         </select>
       </div>
       <div class="small-10 large-3 columns">
-        <select ng-model="roomFilter" ng-options="loc for loc in availableLocs">
+        <select ng-model="query.loc" ng-options="loc for loc in availableLocs">
           <option value="">Filter by Room</option>
         </select>
       </div>
@@ -41,7 +41,7 @@
       <h2>Adoptable Cats</h2>
       <!-- show animal cards -->
       <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
-        <li ng-repeat="cat in cats = (current | filter:query:strict )">
+        <li ng-repeat="cat in cats = (current | filter:query:strict)">
 
           <div class="cat-detail adopted-{{cat.is_current}}">
             <h3><a href="/cat/{{cat.id}}">{{cat.name}}</a></h3>
