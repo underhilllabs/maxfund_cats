@@ -32,7 +32,7 @@
       </div>
 
       <div class="meta-info">
-        <h4>Cat count: {{cats.length}}</h4>
+        <h4>Adoptable cat count: {{cats.length}}</h4>
         <div ng-show="!cats.length">
           <h4>No celebrity animals</h4>
         </div>
@@ -42,7 +42,6 @@
       <!-- show animal cards -->
       <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
         <li ng-repeat="cat in cats = (current | filter:query:strict)">
-
           <div class="cat-detail adopted-{{cat.is_current}}">
             <h3><a href="/cat/{{cat.id}}">{{cat.name}}</a></h3>
             <img ng-src="{{cat.image_url}}" x-width="250px" />
@@ -62,7 +61,6 @@
       <!-- show animal cards -->
       <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
         <li ng-repeat="alum in alums = (alum| filter:query:strict )">
-
           <div class="alum cat-detail">
             <h3><a href="cat/{{alum.id}}">{{alum.name}}</a></h3>
             <img ng-src="{{alum.image_url}}" x-width="250px" />
