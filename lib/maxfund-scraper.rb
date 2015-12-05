@@ -7,10 +7,12 @@ require './lib/maxfund-cats'
 
 doc = Nokogiri::HTML(open('http://maxfund.org/adopt-a-cat/'))
 url = doc.css('iframe')[0].attributes["src"].text
+puts "iframe url: #{url}"
 reg_cats = retrieve_cats_url(url)
 
 doc = Nokogiri::HTML(open('http://maxfund.org/special-cats/'))
 url = doc.css('iframe')[0].attributes["src"].text
+puts "iframe url: #{url}"
 sn_cats = retrieve_cats_url(url)
 
 # First set is_current to 0 foreach
