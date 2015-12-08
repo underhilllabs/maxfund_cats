@@ -19,8 +19,9 @@ def retrieve_cats_url(url)
     cat.id = cat_td.css(".list-animal-id").text
     cat.url = "http://www.petango.com/webservices/adoptablesearch/wsAdoptableAnimalDetails.aspx?id=#{cat.id}" 
     cat_page = Nokogiri::HTML(open(cat.url))
-    cat.description = cat_page.css("span#ct100_main_tblDescription").text
-    cat.intake = cat_page.css("span#ctl00_main_lblIntake").text
+    #cat.description = cat_page.css("span#ct100_main_lbDescription")
+    cat.description = cat_page.css("div.detail-animal-desc")
+    cat.intake = cat_page.css("span#ctl00_main_lblIntakeDate").text
     cat.color = cat_page.css("span#lblColor").text
     cat.image = "http:" + cat_page.css("img#ctl00_main_imgAnimalPhoto").first["src"]
     # save image locally
