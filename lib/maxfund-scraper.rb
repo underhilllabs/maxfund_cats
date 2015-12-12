@@ -21,6 +21,7 @@ CatDM.update(:is_current => 0)
 (reg_cats + sn_cats).each do |cat|
   begin
     @cat = CatDM.first_or_new(maxfund_id: cat.id)
+    intake = cat.intake || null
     attr = { maxfund_id: cat.id,
              name: cat.name,
              description: cat.description,
@@ -32,7 +33,7 @@ CatDM.update(:is_current => 0)
              image_url: cat.image,
              color: cat.color,
              url: cat.url,
-             intake_date:  Date.strptime(cat.intake, "%m/%d/%Y").to_time,
+             intake_date:  Date.strptime(intake, "%m/%d/%Y").to_time,
     }
     @cat.attributes = attr
     @cat.save

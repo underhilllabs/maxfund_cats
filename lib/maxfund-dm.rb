@@ -21,7 +21,7 @@ class CatDM
   property :updated_at, DateTime
 
   def self.current
-    all(is_current: 1, order: [:loc.asc, :intake.desc])
+    all(is_current: 1, order: [:intake.desc, :loc.asc])
   end
   
   def self.alumni
